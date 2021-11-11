@@ -11,9 +11,8 @@
     font-weight: 400;
 }
 
-
 .img-login{
-    height: 99.69418960244649vh;
+    height:  99.69418960244649vh;
     /* height: 1008px; */
     width: 36.9692532942899vw; 
     /* max-height: ; */ 
@@ -98,6 +97,7 @@ input:focus{
 
 .Esqueceu-Span{
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .btn_login{
