@@ -23,7 +23,7 @@
 .img-login-U{
     height: 99.69418960244649vh;
     /* height: 1008px; */
-    width: 50.969253vw; 
+    width: 50.969253vw;     
     /* max-height: ; */ 
     object-fit: cover;
     /* object-position: right; */
@@ -60,7 +60,7 @@ form{
 }
 
 .container-form-Usuario{
-    margin-left: 22.675vw;
+    margin-left: 32.675vw    ;
     width: 259px;
     height: 472px;
     display: flex;
@@ -78,6 +78,7 @@ form{
 }
 
 form input{
+    color: black;
     background-color: transparent;
     /* border: none; */
     border-style: none;
@@ -93,6 +94,10 @@ input:focus{
     
     scale: 1.1;
    
+}
+
+.cor{
+    color: var(--verde);
 }
 
 .Esqueceu-Span{

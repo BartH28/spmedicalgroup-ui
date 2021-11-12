@@ -1,25 +1,61 @@
 import Header from "../../components/header/header";
 import "../../assets/css/minhasConsultas.css"
 import "../../assets/css/reset.css"
+import { useEffect, useState } from "react";
+import axios from "axios";
+// import userEvent from "@testing-library/user-event";
 
-export default function minhasConsultas(){
+export default function MinhasConsultas() {
 
+    const [ListaMinhaConsultas, setLMC] = useState([])
 
+    function buscarConsulta() {
+        axios('http://localhost:5000/api/Consultas/minhas', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(r => {
+                if (r.status === 200) {
+                    setLMC(r.data);
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
 
-    return(
+    useEffect(buscarConsulta, [])
+
+    return (
         <div>
-            <Header/>
+            <Header />
             <main>
-                <div className="Container_Consulta">
-                    <span className="legenda_consu">Usuario</span>
-                    <span className="legenda_consu">Medico</span>
-                    <span className="legenda_consu">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio aliquid earum adipisci, laborum quo qui alias ex veritatis voluptatem rerum! Doloremque beatae sint hic sequi voluptatem totam laboriosam maiores minus.</span>
-                    <span className="legenda_consu">20/03/2021</span>
+                <div className="container_main">
+                    {
+                        ListaMinhaConsultas.map((P) => {
+                            return (
+                                <div className="Container_Consulta">
+                                    <div className="Container_legends" key={P.idConsulta}>
+                                        <span className="legenda_consu">{P.idUsuarioNavigation.nome}</span>
+                                        <span className="legenda_consu">{P.idMedicoNavigation.nome}</span>
+                                        <span className="legenda_consu">{P.descricao}</span>
+                                        <span className="legenda_consu">{
+                                        Intl.DateTimeFormat("pt-BR", {
+                                            year: 'numeric', month: 'numeric', day: 'numeric',
+                                            hour: 'numeric', minute: 'numeric', hour12: true
+                                        }).format(new Date(P.dataConsulta)) 
+                                        }</span>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+
+
                 </div>
             </main>
         </div>
 
-        
+
 
     )
 

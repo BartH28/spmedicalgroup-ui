@@ -5,7 +5,7 @@
     --azul: #83BEDF;
 }
 
-main {
+.main_adm {
     display: flex;
     justify-content: space-between;
     align-items: center;

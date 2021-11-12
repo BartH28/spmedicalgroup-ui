@@ -3,22 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { parseJwt, usuarioAutenticado } from '../src/Services/auth';
+// import { parseJwt, usuarioAutenticado } from '../src/Services/auth';
 import {Route , BrowserRouter as Router,Redirect, Switch} from 'react-router-dom';
 import Login from '../src/pages/login/login';
 import minhasConsultas from './pages/Consultas/minhasConsultas';
+import Administracao from '../src/pages/adm/adm';
+import notFound from './pages/notFound/notFound';
 
-const PermissaoComum = ({ component : Component}) => (
-  <Route 
-  render={(props) =>
-    usuarioAutenticado() && parseJwt().role === '2' ? (
-      <Component {...props} />
-    ) : (
-      <Redirect to="login" />
-    )
-  }
-  />
-);
+// const PermissaoComum = ({ component : Component}) => (
+//   <Route 
+//   render={(props) =>
+//     usuarioAutenticado() && parseJwt().role === '2' ? (
+//       <Component {...props} />
+//     ) : (
+//       <Redirect to="login" />
+//     )
+//   }
+//   />
+// );
 
 
 const routing = (
@@ -28,6 +30,9 @@ const routing = (
         <Route exact path="/" component={App}/>
         <Route path="/login" component={Login} />
         <Route path="/consultas" component={minhasConsultas} />
+        <Route path="/adm" component={Administracao}/>
+        <Route path="/notFound" component={notFound}/>
+        <Redirect to="/notFound"/>
       </Switch>
     </div>
   </Router>

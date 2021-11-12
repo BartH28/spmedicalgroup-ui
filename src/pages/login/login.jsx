@@ -57,7 +57,7 @@ export default function Login(){
                         <input type="email" value={email} onChange={(campo) => setEmail(campo.target.value) } placeholder="Email" name="email" id="inp-email" />
                         <input type="password" value={senha} onChange={(campo) => setSenha(campo.target.value) } placeholder="Senha" name="senha" id="inp-password" />
                         <span className="Esqueceu-Span">Esqueceu a senha?</span>
-                         <p>{errorMsg}</p>
+                         <p className="cor">{errorMsg}</p>
                         {
                             loading === false &&
                         <button className="btn_login_L"  type="submit">Login</button>
